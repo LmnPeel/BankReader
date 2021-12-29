@@ -33,6 +33,7 @@ for day in week_day_dict.values():
 #Writing in data from csv
 #--------------------------------------------------------------
 last_week_net_RBC_expense = 0
+total_expend = 0
 row = 3
 column = 4+first_day_weekday
 #seperate code to start off the starting balance
@@ -57,6 +58,8 @@ for day in range(1, max_day+1):
     if day in transactions: #if the day has a transaction
         worksheet.write(row+1, column, float(transactions[day]['Amount']))
         last_week_net_RBC_expense += float(transactions[day]['Amount'])
+        if float(transactions[day]['Amount']) < 0 and [b[:15] for b in transactions[day]["Description"]] != ['UC Berkely ONLI']: #if it is an expense, add to total expenditure
+            total_expend += float(transactions[day]['Amount'])
         if float(transactions[day]["Amount"]) < -50: #if spending is greater than 50 dollars, write in description
             worksheet.write(row+3, column, str([b[:15] for b in transactions[day]["Description"]]))
 
@@ -65,6 +68,10 @@ for day in range(1, max_day+1):
         row +=5
     else:
         column +=1
+
+#write in monthly expenditure
+worksheet.write(row+4, 10, "Total Spending")
+worksheet.write(row+5, 10, total_expend)
 #---------------------------------------------------------------
 
 workbook.close()
