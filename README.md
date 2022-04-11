@@ -1,6 +1,6 @@
 # BankReader
-Monthly bank statement formatter into calander form, plus cost breakdown. 
+Keeping track of finances is tedious, especially as a broke college student! This program takes in a monthly csv bank statement file and breakdown various spendings, then formats into calander form. It highlights large costs, calculates spending per week, and a few other useful features.
 
-Written as a pragmatic exercise applying course learning by creating a useful program to make life easier. Also, keeping track of finances is tedious!
+Written as a personal exercise on applying course knowledge by creating a useful program to make life easier.
 
 More documentation is written in the python files.
